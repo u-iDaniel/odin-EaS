@@ -10,7 +10,6 @@ function createGrid(n = 16) {
             divSquare.style.width = divSquare.style.height = 
                 `${GRID_SIZE / n}px`;
             divSquare.classList.add("col");
-            divSquare.id = `${i}-${j}`
             divRow.append(divSquare);
         }
         divContainer.append(divRow);
