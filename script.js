@@ -13,10 +13,17 @@ function createGrid(n = 16) {
     }
 }
 
+function randomRGB() {
+    const r = Math.round(Math.random() * 255);
+    const g = Math.round(Math.random() * 255);
+    const b = Math.round(Math.random() * 255);
+    return `rgb(${r},${g},${b})`;
+}
+
 createGrid();
 
 divContainer.addEventListener('mouseover', (event) => {
     if ([...event.target.classList].includes("col")) {
-        event.target.classList.toggle("hover");
+        event.target.style.backgroundColor = randomRGB();
     } 
 })
