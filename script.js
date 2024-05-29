@@ -6,6 +6,7 @@ function createGrid(n = 16) {
         for (let j = 0; j < n; j++) {
             const divSquare = document.createElement("div");
             divSquare.classList.add("col");
+            divSquare.id = `${i}-${j}`
             divRow.append(divSquare);
         }
         divContainer.append(divRow);
@@ -13,3 +14,9 @@ function createGrid(n = 16) {
 }
 
 createGrid();
+
+divContainer.addEventListener('mouseover', (event) => {
+    if ([...event.target.classList].includes("col")) {
+        event.target.classList.toggle("hover");
+    } 
+})
