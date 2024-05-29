@@ -1,4 +1,5 @@
 const divContainer = document.querySelector("div.container");
+const buttonGridSize = document.querySelector("button");
 
 function createGrid(n = 16) {
     for (let i = 0; i < n; i++) {
@@ -13,6 +14,17 @@ function createGrid(n = 16) {
     }
 }
 
+function changeGrid() {
+    let input = +prompt("Enter the new grid size (nxn)");
+    while (input > 100 || input < 0 || Number.isNaN(input)) {
+        input = +prompt("Please enter a valid grid size less than 100");
+    }
+    while (divContainer.firstChild) {
+        divContainer.removeChild(divContainer.lastChild);
+    }
+    createGrid(input);
+}
+
 function randomRGB() {
     const r = Math.round(Math.random() * 255);
     const g = Math.round(Math.random() * 255);
@@ -20,10 +32,12 @@ function randomRGB() {
     return `rgb(${r},${g},${b})`;
 }
 
-createGrid();
-
 divContainer.addEventListener('mouseover', (event) => {
     if ([...event.target.classList].includes("col")) {
         event.target.style.backgroundColor = randomRGB();
     } 
-})
+});
+
+buttonGridSize.addEventListener('click', changeGrid);
+
+createGrid();
