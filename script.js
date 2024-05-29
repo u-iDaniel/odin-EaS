@@ -1,11 +1,14 @@
 const divContainer = document.querySelector("div.container");
 const buttonGridSize = document.querySelector("button");
+const GRID_SIZE = 1600;
 
 function createGrid(n = 16) {
     for (let i = 0; i < n; i++) {
         const divRow = document.createElement("div");
         for (let j = 0; j < n; j++) {
             const divSquare = document.createElement("div");
+            divSquare.style.width = divSquare.style.height = 
+                `${GRID_SIZE / n}px`;
             divSquare.classList.add("col");
             divSquare.id = `${i}-${j}`
             divRow.append(divSquare);
